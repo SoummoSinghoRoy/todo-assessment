@@ -4,9 +4,12 @@ const app = express();
 const config = require('config');
 const mongoose = require('mongoose');
 
-app.get('/', (req, res) => {
-  res.send("Hello World")
-})
+const setMiddlewares = require('./middlewares/middleware');
+const setRoutes = require('./routes/route');
+
+setMiddlewares(app)
+setRoutes(app)
+
 const PORT = process.env.PORT || 4848
 
 mongoose.set("strictQuery", false);
