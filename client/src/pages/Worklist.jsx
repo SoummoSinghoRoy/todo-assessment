@@ -1,16 +1,29 @@
 import React, { Component } from "react";
+import { connect } from 'react-redux';
 
+import WorkListTable from "../components/todo_work/WorklistTable";
+import StatusCard from "../components/todo_work/StatusCard";
+import WorkCreateButton from "../components/todo_work/WorkCreateButton";
 
-const Worklist = () => {
-  return (
-    <div className="container">
-      <div className="row">
-        <div className="col">
-          <h2>Worklist page</h2>
+class Worklist extends Component {
+
+  render() {
+    return(
+      <div className="container">
+        <div className="row">
+          <div className="col-12">
+            <StatusCard />
+          </div>
+          <div className="col-12">
+            <div className="mb-4">
+              <WorkCreateButton />
+            </div>
+            <WorkListTable />
+          </div>
         </div>
       </div>
-    </div>
-  )
+    )
+  }
 }
 
 

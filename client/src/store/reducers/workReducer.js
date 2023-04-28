@@ -1,48 +1,53 @@
 import * as Types from '../actions/types';
 
-let initialState = {
-  transactions: [],
-  totalTransaction: 0,
+let allWorksState = {
+  workList: [],
+  totalWorks: 0,
+  pendingWork: 0,
+  completeWork: 0,
+  dismissWork: 0,
   userInfo: {},
   error: {},
-  
 }
 
-export const allTransactionReducer = (state= initialState, action) => {
+export const allWorksReducer = (state= allWorksState, action) => {
   switch (action.type) {
-    case Types.All_Transaction: {
+    case Types.Work_List: {
       return {
         ...state,
-        transactions: action.payload.transactions,
-        totalTransaction: action.payload.totalTransaction,
+        workList: action.payload.allworks,
+        totalWorks: action.payload.totalWorks,
+        pendingWork: action.payload.pendingWork,
+        completeWork: action.payload.completeWork,
+        dismissWork: action.payload.dismissWork,
         userInfo: action.payload.userInfo
       }
     };
-    case Types.Searching: {
-      return {
-        ...state,
-        transactions: action.payload.searchdata,
-        totalTransaction: action.payload.totalTransaction
-      }
-    }
+    // case Types.Searching: {
+    //   return {
+    //     ...state,
+    //     transactions: action.payload.searchdata,
+    //     totalTransaction: action.payload.totalTransaction
+    //   }
+    // }
     default: return state
   }
 }
 
-let createTransactionState = {
-  transaction: {},
-  error: {}
+let createWorkState = {
+  work: {},
+  error: {},
 }
 
-export const createTransactionReducer = (state = createTransactionState, action) => {
+export const createWorkReducer = (state = createWorkState, action) => {
   switch(action.type) {
-    case Types.Transaction_Create: {
+    case Types.Work_Create: {
       return {
         ...state,
-        transaction: action.payload.transaction,
+        work: action.payload.work,
       }
     };
-    case Types.Transaction_Create_Error: {
+    case Types.Work_Create_Error: {
       return {
         ...state,
         error: action.payload.error
@@ -50,9 +55,9 @@ export const createTransactionReducer = (state = createTransactionState, action)
     };
     default: return state
   }
-} 
+}
 
-let deletedTransactionState = {
+/*let deletedTransactionState = {
   deletedTransactionId: '',
   deleteSuccessMsg: '',
   deleteErrorMsg: ''
@@ -75,9 +80,9 @@ export const deleteTransactionReducer = (state = deletedTransactionState, action
     };
     default: return state
   }
-}
+}*/
 
-let editTransactionState = {
+/*let editTransactionState = {
   updatedTransaction: {},
   successMessage: '',
   errorMessage: ''
@@ -100,4 +105,4 @@ export const editTransactionReducer = (state = editTransactionState, action) => 
     };
     default: return state
   }
-}
+}*/

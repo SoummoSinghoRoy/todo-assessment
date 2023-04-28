@@ -9,10 +9,17 @@ exports.todoWorksController = async (req, res) => {
     const todo_work = await ToDo_Work.find({user: user._id})
                                           .populate("user")
 
+    const pendingWork = await ToDo_Work.countDocuments({status: "Pending"})
+    const completeWork = await ToDo_Work.countDocuments({status: "Complete"})
+    const dismissWork = await ToDo_Work.countDocuments({status: "Dismiss"})
+
     if(todo_work.length !== 0) {
       res.status(200).json({
         todo_work,
         totalWork: todo_work.length,
+        pendingWork,
+        completeWork,
+        dismissWork,
         user
       })
     }else {
