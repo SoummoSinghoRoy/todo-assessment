@@ -3,11 +3,32 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './components/App';
 import reportWebVitals from './reportWebVitals';
+import { Provider } from 'react-redux';
+
+import store from './store/index';
+import * as Types from './store/actions/types';
+import sendAuthenticateUserToken from './utils/sendAuthencticateUserToken';
+import jwtDecode from 'jwt-decode';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+const token = localStorage.getItem('loggedIn_user_token')
+sendAuthenticateUserToken(token)
+
+if(token) {
+  const decode = jwtDecode(token)
+  store.dispatch({
+    type: Types.LogIn_User,
+    payload: {
+      user: decode
+    }
+  })
+}
 root.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>
 );
 
