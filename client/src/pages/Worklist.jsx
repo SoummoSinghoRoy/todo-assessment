@@ -16,11 +16,11 @@ class Worklist extends Component {
           </div>
           <div className="col-12">
             <div className="row mb-4">
-              <div className="col-4">
+              <div className="col-12 col-md-4 col-lg-4 mb-3 mb-lg-0 mb-md-0">
                 <WorkCreateButton />
               </div>
-              <div className="col-2"></div>
-              <div className="col-6">
+              <div className="col-12 col-md-2 col-lg-2"></div>
+              <div className="col-12 col-md-6 col-lg-">
                 <Search />
               </div>
             </div>

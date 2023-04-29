@@ -9,14 +9,10 @@ const AppLayout = () => {
     <>
       {
          location.pathname === '/' ? <Home/> : 
-         <div className="container">
-          <div className='row'>
-            <div className='col'>
-              <Navigation />
-              <Outlet />
-            </div>
-          </div>   
-        </div> 
+         <div className='container'>
+          <Navigation />
+          <Outlet />
+         </div>
       }
     </>
 	)

@@ -6,15 +6,15 @@ import { loadAllWorksAction } from '../../store/actions/workAction';
 const WorkStatusCard = (props) => {
   return(
     <div className="row my-5">
-      <div className="col">
+      <div className="col-12 col-md-4 col-lg-4">
         <div className="card mb-3 bg-success bg-gradient text-white shadow">
           <div className="row g-0">
-            <div className="col-md-8">
+            <div className="col-6 col-md-8">
               <div className="card-body">
                 <h4 className="card-title">Completed</h4>
               </div>
             </div>
-            <div className="col-md-4">
+            <div className="col-6 col-md-4">
               <div className="card-body align-self-center">
                 <h4 className="text-end">
                   { props.completed }
@@ -24,15 +24,15 @@ const WorkStatusCard = (props) => {
           </div>
         </div>
       </div>
-      <div className="col">
+      <div className="col-12 col-md-4 col-lg-4">
         <div className="card mb-3 bg-warning bg-gradient text-secondary shadow">
           <div className="row g-0">
-            <div className="col-md-8">
+            <div className="col-6 col-md-8">
               <div className="card-body">
                 <h4 className="card-title">Pending</h4>
               </div>
             </div>
-            <div className="col-md-4">
+            <div className="col-6 col-md-4">
             <div className="card-body align-self-center">
                 <h4 className="text-end">
                   { props.pending }
@@ -42,15 +42,15 @@ const WorkStatusCard = (props) => {
           </div>
         </div>
       </div>
-      <div className="col">
+      <div className="col-12 col-md-4 col-lg-4">
         <div className="card mb-3 bg-danger text-danger-emphasis shadow">
           <div className="row g-0">
-            <div className="col-md-8">
+            <div className="col-6 col-md-8">
               <div className="card-body">
                 <h4 className="card-title">Dismiss</h4>
               </div>
             </div>
-            <div className="col-md-4">
+            <div className="col-6 col-md-4">
             <div className="card-body align-self-center">
                 <h4 className="text-end">
                   { props.dismiss }

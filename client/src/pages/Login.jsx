@@ -46,8 +46,8 @@ class LogIn extends Component {
     return (
        <div className="container">
         <div className="row my-5">
-          <div className="col-4"></div>
-          <div className="col-4">
+          <div className="col-12 col-md-4 col-lg-4"></div>
+          <div className="col-12 col-md-4 col-lg-4">
           {this.props.error.Message ? <Alert 
                           variant="warning" 
                           show={this.state.messageAlert} 

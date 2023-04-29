@@ -161,11 +161,12 @@ class WorkListTable extends Component{
                                     currentworkInfo = { work }
                                   /> : null
                                 }
-                                <button 
-                                  type="button" 
-                                  className="btn btn-danger px-3 ms-2"
+                                <Button 
+                                  type="button"
+                                  variant="danger" 
+                                  className="px-3 ms-2 mt-2 mt-md-0 mt-md-0"
                                   onClick={ () => this.deleteWork(work._id) }
-                                >Delete</button>
+                                >Delete</Button>
                               </div>
                             </td>
                           </tr>

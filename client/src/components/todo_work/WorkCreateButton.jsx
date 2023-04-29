@@ -24,7 +24,7 @@ class WorkCreateButton extends Component {
     return(
       <div>
         <Button 
-          variant="secondary" 
+          variant="secondary"
           onClick={this.openWorkCreateModal}
         >
           Add todo item
