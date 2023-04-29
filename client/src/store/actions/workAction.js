@@ -39,25 +39,25 @@ export const createWorkAction = (todoWork) => (dispatch) => {
   })
 }
 
-/*export const deleteTransactionAction = (transactionId) => (dispatch) => {
-  axios.delete(`api/transaction/delete/${transactionId}`).then((response) => {
+export const deleteWorkAction = (workId) => (dispatch) => {
+  axios.delete(`api/todo/delete/${workId}`).then((response) => {
     dispatch({
-      type: Types.Transaction_Delete,
+      type: Types.Work_Delete,
       payload: {
-        deletedTransactionId: response.data.deletedTransaction._id,
-        successMessage: `Transaction deleted successfully`
+        deletedWorkId: response.data.deletedWork._id,
+        successMessage: `Work deleted successfully`
       }
     })
   }).catch((error) => {
     console.log(error);
     dispatch({
-      type: Types.Transaction_Delete_Error,
+      type: Types.Work_Delete_Error,
       payload: {
-        errorMessage: `Transaction isn't deleted`
+        errorMessage: `Work isn't deleted`
       }
     })
   })
-}*/
+}
 
 export const editWorkAction = (workId, updatedWork) => (dispatch) => {
   axios.put(`api/todo/edit/${workId}`, updatedWork).then((response) => {

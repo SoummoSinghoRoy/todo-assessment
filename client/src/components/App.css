@@ -1,0 +1,13 @@
+.wrapper {
+  background: url('../../public/background-2.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+.search-box {
+  border-color: brown;
+}

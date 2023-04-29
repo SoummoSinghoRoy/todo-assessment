@@ -1,7 +1,12 @@
 const authRoute = require('./authRoute');
 const todoWorkRoute = require('./todoWorkRoute');
+const searchRoute = require('./searchRoute');
 
 const routes = [
+  {
+    path: '/api/search',
+    handler: searchRoute
+  },
   {
     path: '/api/todo',
     handler: todoWorkRoute

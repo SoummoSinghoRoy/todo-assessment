@@ -1,17 +1,24 @@
 import React from 'react';
-import { Outlet } from 'react-router-dom'
+import { Outlet, useLocation } from 'react-router-dom'
 import Navigation from './Navigation'
+import Home from '../../pages/Home';
 
 const AppLayout = () => {
+  const location = useLocation()
 	return(
-		<div className="container">
-      <div className='row'>
-        <div className='col'>
-          <Navigation />
-          <Outlet />
-        </div>
-      </div>   
-		</div>
+    <>
+      {
+         location.pathname === '/' ? <Home/> : 
+         <div className="container">
+          <div className='row'>
+            <div className='col'>
+              <Navigation />
+              <Outlet />
+            </div>
+          </div>   
+        </div> 
+      }
+    </>
 	)
 }
 

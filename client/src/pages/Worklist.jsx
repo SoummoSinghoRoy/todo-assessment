@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import { connect } from 'react-redux';
 
 import WorkListTable from "../components/todo_work/WorklistTable";
 import StatusCard from "../components/todo_work/StatusCard";
 import WorkCreateButton from "../components/todo_work/WorkCreateButton";
+import Search from "../components/Search";
 
 class Worklist extends Component {
 
@@ -15,8 +15,14 @@ class Worklist extends Component {
             <StatusCard />
           </div>
           <div className="col-12">
-            <div className="mb-4">
-              <WorkCreateButton />
+            <div className="row mb-4">
+              <div className="col-4">
+                <WorkCreateButton />
+              </div>
+              <div className="col-2"></div>
+              <div className="col-6">
+                <Search />
+              </div>
             </div>
             <WorkListTable />
           </div>

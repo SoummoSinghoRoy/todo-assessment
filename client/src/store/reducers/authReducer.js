@@ -8,18 +8,14 @@ let initialState = {
 
 export const signUpReducer = (state = initialState, action) => {
   switch(action.type) {
-    case Types.SignUp_User: {
-      return {
-        user: action.payload.registeredUser,
-        isAuthenticated: Object.keys(action.payload.registeredUser).length !== 0,
-        error: {}
-      }
+    case Types.SignUp_User: return {
+      user: action.payload.registeredUser,
+      isAuthenticated: Object.keys(action.payload.registeredUser).length !== 0,
+      error: {}
     };
-    case Types.SignUp_Error: {
-      return {
-        ...state,
-        error: action.payload.error
-      }
+    case Types.SignUp_Error:  return {
+      ...state,
+      error: action.payload.error
     };
     default: return state
   }
@@ -27,26 +23,20 @@ export const signUpReducer = (state = initialState, action) => {
 
 export const logInReducer = (state = initialState, action) => {
   switch(action.type) {
-    case Types.LogIn_User: {
-      return {
-        user: action.payload.user,
-        isAuthenticated: Object.keys(action.payload.user).length !== 0,
-        error: {}
-      }
+    case Types.LogIn_User: return {
+      user: action.payload.user,
+      isAuthenticated: Object.keys(action.payload.user).length !== 0,
+      error: {}
     };
-    case Types.LogIn_Error: {
-      return {
-        ...state,
-        error: action.payload.error
-      }
+    case Types.LogIn_Error: return {
+      ...state,
+      error: action.payload.error
     };
-    case Types.Logout_User: {
-      return {
-        user: action.payload.user,
-        isAuthenticated: Object.keys(action.payload.user).length !== 0,
-        error: action.payload.error
-      }
-    }
+    case Types.Logout_User: return {
+      user: action.payload.user,
+      isAuthenticated: Object.keys(action.payload.user).length !== 0,
+      error: action.payload.error
+    };
     default: return state
   }
 }

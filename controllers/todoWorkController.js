@@ -6,9 +6,9 @@ const todoWorkCreateValidation = require('../validator/todo_work/todoWorkCreateV
 exports.todoWorksController = async (req, res) => {
   try {
     const user = await User.findOne({_id: req.user._id})
-    const todo_work = await ToDo_Work.find({user: user._id})
-                                          .populate("user")
-
+    const works = await ToDo_Work.find({user: user._id})
+                                      .populate("user")
+    const todo_work = works.reverse()
     const pendingWork = await ToDo_Work.countDocuments({status: "Pending"})
     const completeWork = await ToDo_Work.countDocuments({status: "Complete"})
     const dismissWork = await ToDo_Work.countDocuments({status: "Dismiss"})

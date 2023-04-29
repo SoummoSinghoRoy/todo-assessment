@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Modal, Form, Row, Col, Button, Alert } from 'react-bootstrap';
+import { Modal, Form, Button, Alert } from 'react-bootstrap';
 import { connect } from 'react-redux';
 
 import { editWorkAction } from '../../store/actions/workAction';
@@ -66,7 +66,7 @@ class WorkEditModal extends Component{
         </Modal.Header>
         <Modal.Body>
           <Form method='post' onSubmit={this.submitHandler} className='pt-3 pb-5'>
-            <Form.Group as={Col} controlId="deadline">
+            <Form.Group controlId="deadline">
               <Form.Label>Deadline</Form.Label>
               <Form.Control 
                 type="date"
@@ -76,7 +76,7 @@ class WorkEditModal extends Component{
               />
             </Form.Group>
 
-            <Form.Group as={Col} controlId="work_description" className='my-3'>
+            <Form.Group controlId="work_description" className='my-3'>
               <Form.Label>Short description</Form.Label>
               <Form.Control 
                 as="textarea"
@@ -87,7 +87,7 @@ class WorkEditModal extends Component{
               />
             </Form.Group>  
 
-            <Form.Group as={Col} controlId="work_description" className='my-3'>
+            <Form.Group controlId="work_description" className='my-3'>
               <Form.Label>Current work status</Form.Label>
               <Form.Select aria-label="Current work status" value={status} onChange={this.selectHandler}>
                 <option value="Pending">Pending</option>

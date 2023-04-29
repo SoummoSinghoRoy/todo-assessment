@@ -36,9 +36,6 @@ const Navigation = (props) => {
                 <li className="nav-item">
                   <NavLink className={({isActive}) => isActive ? 'nav-link active fw-bold' : 'nav-link fw-semibolder'} to="/login">Log in</NavLink>
                 </li>
-                <li className="nav-item">
-                  <NavLink className={({isActive}) => isActive ? 'nav-link active fw-bold' : 'nav-link fw-semibolder'} to="/guideline">Install guide</NavLink>
-                </li>
               </React.Fragment> 
             }
           </ul>

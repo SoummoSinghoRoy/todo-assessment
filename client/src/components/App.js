@@ -8,7 +8,6 @@ import UnAuthenticateRoute from './partials/UnAuthenticateRoute';
 import Home from '../pages/Home';
 import Signup from '../pages/Signup';
 import Login from '../pages/Login';
-import Guideline from '../pages/Guideline';
 import Worklist from '../pages/Worklist';
 
 class App extends Component {
@@ -23,11 +22,6 @@ class App extends Component {
                 <AuthenticateRoute>
                   <Worklist />
                 </AuthenticateRoute>
-              }/>
-              <Route path='guideline' element= {
-                <UnAuthenticateRoute>
-                  <Guideline />
-                </UnAuthenticateRoute>
               }/>
               <Route path='signup' element= {
                 <UnAuthenticateRoute>

@@ -22,7 +22,7 @@ class LogIn extends Component {
 
   submitHandler = (event) => {
     event.preventDefault()
-    if(this.props.error.Message != '') {
+    if(this.props.error.Message !== '') {
       this.setState({
         messageAlert: true,
         message: this.props.error.Message
@@ -54,7 +54,7 @@ class LogIn extends Component {
                           onClose=  {this.messageAlertClose} 
                           dismissible
                         >
-                          <p className="my-0 fw-bolder">{ this.props.error.Message != '' ? this.props.error.Message : message }</p>
+                          <p className="my-0 fw-bolder">{ this.props.error.Message !== '' ? this.props.error.Message : message }</p>
                         </Alert>: null }
             <div className="card px-3 py-3">
               <h5 className="text-center">Log in here</h5>
