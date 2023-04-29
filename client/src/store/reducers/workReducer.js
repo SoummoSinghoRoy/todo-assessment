@@ -82,22 +82,22 @@ export const deleteTransactionReducer = (state = deletedTransactionState, action
   }
 }*/
 
-/*let editTransactionState = {
-  updatedTransaction: {},
-  successMessage: '',
+let editWorkState = {
+  updatedWork: {},
+  updatesuccessMsg: '',
   errorMessage: ''
 }
 
-export const editTransactionReducer = (state = editTransactionState, action) => {
+export const editWorkReducer = (state = editWorkState, action) => {
   switch(action.type) {
-    case Types.Transaction_Edit: {
+    case Types.Work_Edit: {
       return {
-        updatedTransaction: action.payload.updatedTransaction,
-        successMessage: action.payload.successMessage, 
+        updatedWork: action.payload.updatedWork,
+        updatesuccessMsg: action.payload.successMsg, 
         errorMessage: ''
       }
     };
-    case Types.Transaction_Edit_Error: {
+    case Types.Work_Edit_Error: {
       return {
         ...state,
         errorMessage: action.payload.errorMessage
@@ -105,4 +105,4 @@ export const editTransactionReducer = (state = editTransactionState, action) => 
     };
     default: return state
   }
-}*/
+}

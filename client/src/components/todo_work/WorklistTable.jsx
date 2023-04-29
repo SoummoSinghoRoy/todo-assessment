@@ -1,14 +1,46 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
+import { Button, Alert } from 'react-bootstrap';
 
-import { loadAllWorksAction } from '../../store/actions/workAction';
-
+import { loadAllWorksAction, editWorkAction } from '../../store/actions/workAction';
+import WorkEditModal from "./WorkEditModal";
 
 class WorkListTable extends Component{
+  state = {
+    editAbleWorkId: 0,
+    editModal: false,
+  }
 
   componentDidMount() {
     this.props.loadAllWorksAction()
   }
+
+  componentDidUpdate() {
+    let currentWork = [...this.props.allWorks]
+    let updatedWork = this.props.updateWork
+    currentWork.map((work) => {
+      if(work._id === updatedWork._id) {
+        return work = updatedWork
+      }
+      return work
+    })
+  }
+
+  openWorkEditModal = (workId) => {
+    this.setState({
+      editAbleWorkId: workId,
+      editModal: true
+    })
+  }
+
+  closeWorkEditModal = () => {
+    this.setState({
+      editAbleWorkId: 0,
+      editModal: false
+    })
+    this.props.loadAllWorksAction()
+  }
+
   render() {
     return(
       <div className="card shadow">
@@ -35,27 +67,28 @@ class WorkListTable extends Component{
                           <td>{work.work_description}</td>
                           <td>{work.deadline}</td>
                           <td>{work.status}</td>
-                          {/* <td>
+                          <td>
                             <div className="d-inline">
                               <Button 
                                 variant="warning"
                                 className="px-4" 
-                                onClick={() => this.openTransactionEditModal(transaction._id)}
+                                onClick={() => this.openWorkEditModal(work._id)}
                               >Edit</Button>
                               {
-                                this.state.editAbleTransactionId === transaction._id ?    <EditTransactionModal 
-                                  isShow = { this.state.editTransactionModal }
-                                  isHide = { this.closeTransactionEditModal }
-                                  currentTransactionInfo = { transaction }
+                                this.state.editAbleWorkId === work._id ?
+                                <WorkEditModal 
+                                  isShow = { this.state.editModal }
+                                  isHide = { this.closeWorkEditModal }
+                                  currentworkInfo = { work }
                                 /> : null
                               }
-                              <button 
+                              {/* <button 
                                 type="button" 
                                 className="btn btn-danger px-3 ms-2"
                                 onClick={ () => this.deleteTransaction(transaction._id) }
-                              >Delete</button>
+                              >Delete</button> */}
                             </div>
-                          </td> */}
+                          </td>
                         </tr>
                       )
                     })
@@ -81,7 +114,8 @@ const mapStateToProps = (state) => {
     allWorks: state.all_works.workList,
     totalWorks: state.all_works.totalWorks,
     userInfo: state.all_works.userInfo,
+    updateWork: state.edited_todo.updatedWork
   }
 }
 
-export default connect(mapStateToProps, { loadAllWorksAction })(WorkListTable);
+export default connect(mapStateToProps, { loadAllWorksAction, editWorkAction })(WorkListTable);

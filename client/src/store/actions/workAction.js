@@ -59,22 +59,22 @@ export const createWorkAction = (todoWork) => (dispatch) => {
   })
 }*/
 
-/*export const editTransactionAction = (transactionId, updatedTransaction) => (dispatch) => {
-  axios.put(`api/transaction/edit/${transactionId}`, updatedTransaction).then((response) => {
+export const editWorkAction = (workId, updatedWork) => (dispatch) => {
+  axios.put(`api/todo/edit/${workId}`, updatedWork).then((response) => {
     dispatch({
-      type: Types.Transaction_Edit,
+      type: Types.Work_Edit,
       payload: {
-        updatedTransaction: response.data.updatedTransaction,
-        successMessage: response.data.msg
+        updatedWork: response.data.updatedToDo_work,
+        successMsg: response.data.msg
       }
     })
   }).catch((error) => {
     console.log(error);
     dispatch({
-      type: Types.Transaction_Edit_Error,
+      type: Types.Work_Edit_Error,
       payload: {
-        errorMessage: `Transaction can't update`
+        errorMessage: `Work can't update`
       }
     })
   })
-}*/
+}
