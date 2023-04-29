@@ -1,7 +1,9 @@
 import React, {Component} from "react";
 import { Button } from 'react-bootstrap';
+import { connect } from "react-redux";
 
 import WorkCreateModal from "./WorkCreateModal";
+import { loadAllWorksAction } from "../../store/actions/workAction";
 
 class WorkCreateButton extends Component {
   state = {
@@ -18,6 +20,7 @@ class WorkCreateButton extends Component {
     this.setState({
       createModal: false
     })
+    this.props.loadAllWorksAction()
   }
 
   render() {
@@ -38,4 +41,4 @@ class WorkCreateButton extends Component {
   }
 }
 
-export default WorkCreateButton;
+export default connect(null, { loadAllWorksAction })(WorkCreateButton);
