@@ -9,8 +9,8 @@ const ToDo_WorkSchema = new Schema({
   deadline: {
     type: String,
     required: true,
-    set: (value) => moment(value).format('DD-MM-YYYY'),
-    get: (value) => moment(value).format('DD-MM-YYYY')
+    set: (value) => moment(value, 'DD-MM-YYYY').format('YYYY-MM-DD'),
+    get: (value) => moment(value, 'YYYY-MM-DD').format('DD-MM-YYYY')
   },
   status: {
     type: String,

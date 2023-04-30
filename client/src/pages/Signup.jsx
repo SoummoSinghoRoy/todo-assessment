@@ -33,7 +33,7 @@ class Signup extends Component {
     this.props.signUpUserAction({name, email, password, profession}, this.props.navigation)
   }
 
-  messageAlertClose = () => {
+  signUpmessageAlertClose = () => {
     this.setState({
       messageAlert: false,
       email: '',
@@ -52,7 +52,7 @@ class Signup extends Component {
           {this.props.error.Message ? <Alert 
                           variant="warning" 
                           show={this.state.messageAlert} 
-                          onClose=  {this.messageAlertClose} 
+                          onClose=  {this.signUpmessageAlertClose} 
                           dismissible
                         >
                           <p className="my-0 fw-bolder">{ this.props.error.Message !== '' ? this.props.error.Message : null }</p>

@@ -17,7 +17,7 @@ export const signUpReducer = (state = initialState, action) => {
       ...state,
       error: action.payload.error
     };
-    case Types.Clear_State: return {
+    case Types.Clear_Auth_State: return {
       user: {},
       isAuthenticated: false,
       error: {}
@@ -37,7 +37,7 @@ export const logInReducer = (state = initialState, action) => {
       ...state,
       error: action.payload.error
     };
-    case Types.Clear_State: return {
+    case Types.Clear_Auth_State: return {
       user: {},
       isAuthenticated: false,
       error: {}
