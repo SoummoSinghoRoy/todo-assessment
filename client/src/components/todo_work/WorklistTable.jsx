@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from 'react-redux';
 import { Button, Alert } from 'react-bootstrap';
 
-import { loadAllWorksAction, editWorkAction, deleteWorkAction } from '../../store/actions/workAction';
+import { loadAllWorksAction, editWorkAction, deleteWorkAction, clearStateAction } from '../../store/actions/workAction';
 import WorkEditModal from "./WorkEditModal";
 import Pagination from "../Pagination";
 import {searchResultAction} from '../../store/actions/searchAction';
@@ -59,6 +59,7 @@ class WorkListTable extends Component{
     this.setState({
       deleteMsgAlert: false,
     })
+    this.props.clearStateAction()
     this.props.loadAllWorksAction()
   }
 
@@ -203,4 +204,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { loadAllWorksAction, editWorkAction, deleteWorkAction, searchResultAction })(WorkListTable);
+export default connect(mapStateToProps, { loadAllWorksAction, editWorkAction, deleteWorkAction, searchResultAction, clearStateAction })(WorkListTable);

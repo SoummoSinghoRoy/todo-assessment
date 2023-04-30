@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { Modal, Form, Button, Alert } from 'react-bootstrap';
 import { connect } from 'react-redux';
 
-import { editWorkAction } from '../../store/actions/workAction';
+import { editWorkAction, clearStateAction } from '../../store/actions/workAction';
 
 class WorkEditModal extends Component{
   state = {
@@ -10,7 +10,6 @@ class WorkEditModal extends Component{
     work_description: '',
     status: 'Pending',
     messageAlert: true,
-    updateSuccessMsg: ''
   }
 
   componentDidMount() {
@@ -38,28 +37,28 @@ class WorkEditModal extends Component{
     this.props.editWorkAction(this.props.currentworkInfo._id, {deadline, work_description, status})
     this.setState({
       messageAlert: true,
-      updateSuccessMsg: this.props.updateSuccessMsg,
     })
   }
 
   messageAlertClose = () => {
+    this.props.clearStateAction()
     this.setState({
       messageAlert: false,
-      updateSuccessMsg: '',
     })
+    
   }
 
   render() {
-    const { deadline, work_description, status, updateSuccessMsg } = this.state
+    const { deadline, work_description, status } = this.state
     return (
       <Modal show ={ this.props.isShow } onHide= {this.props.isHide}>
-        {updateSuccessMsg ? <Alert 
+        {this.props.updateSuccessMsg ? <Alert 
                               variant="success" 
                               show={this.state.messageAlert} 
                               onClose=  {this.messageAlertClose} 
                               dismissible
                             >
-                              <p className="my-0 fw-bolder">{ updateSuccessMsg}</p>
+                              <p className="my-0 fw-bolder">{ this.props.updateSuccessMsg}</p>
                             </Alert>: null }
         <Modal.Header closeButton>
           <Modal.Title>Update work</Modal.Title>
@@ -111,4 +110,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { editWorkAction })(WorkEditModal);
+export default connect(mapStateToProps, { editWorkAction, clearStateAction })(WorkEditModal);

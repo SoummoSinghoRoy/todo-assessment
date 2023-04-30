@@ -11,6 +11,7 @@ const Work_Delete_Error = "Work_Delete_Error";
 const Work_Edit = "Work_Edit";
 const Work_Edit_Error = "Work_Edit_Error";
 const Searching = "Searching";
+const Clear_State = "Clear_State"
 
 
 
@@ -18,5 +19,6 @@ export {
   SignUp_User, SignUp_Error, 
   LogIn_User, LogIn_Error, Logout_User, 
   Work_List, Work_Create, Work_Create_Error, Work_Delete, Work_Delete_Error, Work_Edit, Work_Edit_Error,
-  Searching 
+  Searching,
+  Clear_State 
 }; 

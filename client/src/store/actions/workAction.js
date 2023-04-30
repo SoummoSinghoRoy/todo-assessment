@@ -78,3 +78,7 @@ export const editWorkAction = (workId, updatedWork) => (dispatch) => {
     })
   })
 }
+
+export const clearStateAction = () => (dispatch) => {
+  dispatch({ type: Types.Clear_State })
+}

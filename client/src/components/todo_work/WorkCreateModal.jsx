@@ -2,14 +2,13 @@ import React, {Component} from 'react';
 import { Modal, Form, Button, Alert } from 'react-bootstrap';
 import { connect } from 'react-redux';
 
-import { createWorkAction, loadAllWorksAction } from '../../store/actions/workAction'
+import { createWorkAction, loadAllWorksAction, clearStateAction } from '../../store/actions/workAction'
 
 class CreateWorkModal extends Component {
   state = {
     deadline: '',
     work_description: '',
     messageAlert: true,
-    createSuccessMsg: '',
   }
 
   changeHandler = (event) => {
@@ -26,15 +25,14 @@ class CreateWorkModal extends Component {
       deadline: '',
       work_description: '',
       messageAlert: true,
-      createSuccessMsg: this.props.createSuccessMsg,
     })
   }
 
   messageAlertClose = () => {
     this.setState({
       messageAlert: false,
-      createSuccessMsg: '',
     })
+    this.props.clearStateAction()
     this.props.loadAllWorksAction()
   }
 
@@ -93,4 +91,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, {createWorkAction, loadAllWorksAction})(CreateWorkModal);
+export default connect(mapStateToProps, {createWorkAction, loadAllWorksAction, clearStateAction})(CreateWorkModal);

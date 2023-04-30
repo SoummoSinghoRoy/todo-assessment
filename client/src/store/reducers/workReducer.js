@@ -45,6 +45,10 @@ export const createWorkReducer = (state = createWorkState, action) => {
       ...state,
       error: action.payload.error
     };
+    case Types.Clear_State: return {
+      work: {},
+      error: {},
+    };
     default: return state
   }
 }
@@ -66,6 +70,11 @@ export const deleteWorkReducer = (state = deletedWorkState, action) => {
       ...state,
       deleteErrorMsg: action.payload.errorMessage
     };
+    case Types.Clear_State: return {
+      deletedWorkId: 0,
+      deleteSuccessMsg: '',
+      deleteErrorMsg: ''
+    };
     default: return state
   }
 }
@@ -86,6 +95,11 @@ export const editWorkReducer = (state = editWorkState, action) => {
     case Types.Work_Edit_Error:return {
       ...state,
       errorMessage: action.payload.errorMessage
+    };
+    case Types.Clear_State: return {
+      updatedWork: {},
+      updatesuccessMsg: '',
+      errorMessage: ''
     };
     default: return state
   }

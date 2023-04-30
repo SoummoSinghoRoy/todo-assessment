@@ -59,3 +59,7 @@ export const logoutUserAction = (redirect) => {
     }
   }
 }
+
+export const clearAuthState = () => (dispatch) => {
+  dispatch({ type: Types.Clear_State })
+}
