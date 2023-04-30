@@ -50,16 +50,16 @@ class WorkEditModal extends Component{
   }
 
   render() {
-    const { deadline, work_description, status } = this.state
+    const { deadline, work_description, status, updateSuccessMsg } = this.state
     return (
       <Modal show ={ this.props.isShow } onHide= {this.props.isHide}>
-        {this.props.updateSuccessMsg ? <Alert 
+        {updateSuccessMsg ? <Alert 
                               variant="success" 
                               show={this.state.messageAlert} 
                               onClose=  {this.messageAlertClose} 
                               dismissible
                             >
-                              <p className="my-0 fw-bolder">{ this.props.updateSuccessMsg }</p>
+                              <p className="my-0 fw-bolder">{ updateSuccessMsg}</p>
                             </Alert>: null }
         <Modal.Header closeButton>
           <Modal.Title>Update work</Modal.Title>
