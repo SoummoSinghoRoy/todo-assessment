@@ -3,15 +3,14 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Alert } from 'react-bootstrap';
 
-import { logInUserAction } from '../store/actions/authAction';
+import { logInUserAction, clearAuthState } from '../store/actions/authAction';
 import withNavigateHook from '../components/withNavigateHook';
 
 class LogIn extends Component {
   state = {
     email: '',
     password: '',
-    messageAlert: true,
-    message: null
+    messageAlert: true
   }
 
   changeHandler = (event) => {
@@ -25,7 +24,6 @@ class LogIn extends Component {
     if(this.props.error.Message !== '') {
       this.setState({
         messageAlert: true,
-        message: this.props.error.Message
       })
     }
     const { email, password } = this.state
@@ -35,14 +33,14 @@ class LogIn extends Component {
   messageAlertClose = () => {
     this.setState({
       messageAlert: false,
-      message: null,
       email: '',
       password: ''
     })
+    this.props.clearAuthState()
   }
 
   render() {
-    let { email, password, message } = this.state
+    let { email, password } = this.state
     return (
        <div className="container">
         <div className="row my-5">
@@ -54,7 +52,7 @@ class LogIn extends Component {
                           onClose=  {this.messageAlertClose} 
                           dismissible
                         >
-                          <p className="my-0 fw-bolder">{ this.props.error.Message !== '' ? this.props.error.Message : message }</p>
+                          <p className="my-0 fw-bolder">{ this.props.error.Message !== '' ? this.props.error.Message : null }</p>
                         </Alert>: null }
             <div className="card px-3 py-3">
               <h5 className="text-center">Log in here</h5>
@@ -110,4 +108,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, {logInUserAction})(withNavigateHook(LogIn));
+export default connect(mapStateToProps, {logInUserAction, clearAuthState})(withNavigateHook(LogIn));

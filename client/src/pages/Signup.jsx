@@ -1,8 +1,9 @@
 import React, {Component} from "react";
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { Alert } from 'react-bootstrap';
 
-import { signUpUserAction } from '../store/actions/authAction';
+import { signUpUserAction, clearAuthState } from '../store/actions/authAction';
 import withNavigateHook from "../components/withNavigateHook";
 
 class Signup extends Component {
@@ -10,7 +11,8 @@ class Signup extends Component {
     name: '',
     email: '',
     password: '',
-    profession: ''
+    profession: '',
+    messageAlert: true
   }
 
 
@@ -22,8 +24,22 @@ class Signup extends Component {
 
   submitHandler = (event) => {
     event.preventDefault()
+    if(this.props.error.Message !== '') {
+      this.setState({
+        messageAlert: true,
+      })
+    }
     const { name, email, password, profession } = this.state
     this.props.signUpUserAction({name, email, password, profession}, this.props.navigation)
+  }
+
+  messageAlertClose = () => {
+    this.setState({
+      messageAlert: false,
+      email: '',
+      password: ''
+    })
+    this.props.clearAuthState()
   }
 
   render() {
@@ -33,6 +49,14 @@ class Signup extends Component {
         <div className="row my-3">
           <div className="col-12 col-md-3 col-lg-3"></div>
           <div className="col-12 col-md-6 col-lg-6">
+          {this.props.error.Message ? <Alert 
+                          variant="warning" 
+                          show={this.state.messageAlert} 
+                          onClose=  {this.messageAlertClose} 
+                          dismissible
+                        >
+                          <p className="my-0 fw-bolder">{ this.props.error.Message !== '' ? this.props.error.Message : null }</p>
+                        </Alert>: null }
             <div className="card px-3 py-3">
               <h5 className="text-center">Signup here</h5>
               <p className="text-center">Have an account? <Link to="/login" className="card-link">Login now</Link> </p>
@@ -118,4 +142,4 @@ const mapStateToProps = (state) => {
     error: state.signUp.error,
   }
 }
-export default connect(mapStateToProps, {signUpUserAction})(withNavigateHook(Signup));
+export default connect(mapStateToProps, {signUpUserAction, clearAuthState})(withNavigateHook(Signup));
