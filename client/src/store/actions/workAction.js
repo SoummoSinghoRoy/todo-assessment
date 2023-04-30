@@ -3,6 +3,7 @@ import axios from 'axios';
 import * as Types from './types';
 
 export const loadAllWorksAction = () => (dispatch) => {
+  console.log("loaded task");
   axios.get('api/todo').then((response) => {
     dispatch({
       type: Types.Work_List,
